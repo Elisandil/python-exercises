@@ -121,10 +121,10 @@ cantidad_max = total_cities[localidad_max]
 print(f"Localidad con más personas: {localidad_max}")
 print(f"Número de personas: {cantidad_max}")
 
-localidades_ordenadas = sorted(total_cities.items(), key=lambda x: x[1], reverse=True)
+sorted_cities = sorted(total_cities.items(), key=lambda x: x[1], reverse=True)
 
 print("\nTop 5 localidades con más personas:")
 print("-" * 40)
-for i, (city, cantidad) in enumerate(localidades_ordenadas[:5], 1):
-    print(f"{i}. {city}: {cantidad} personas")
+for i, (city, quantity) in enumerate(sorted_cities[:5], 1):
+    print(f"{i}. {city}: {quantity} personas")
 print("\n")
