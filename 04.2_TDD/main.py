@@ -1,21 +1,13 @@
-#!/usr/bin/env python3
-"""
-Aplicación de Gestión de Tareas
-Sistema completo para crear, gestionar y reportar tareas
-"""
-
 from data_handler import Task, Task_handler, load_tasks_from_file, save_tasks_to_file
 from reports import generate_pdf_report
 import os
 
 
 def clear_screen():
-    """Limpia la pantalla de la consola"""
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def print_menu():
-    """Muestra el menú principal"""
     print("\n" + "="*50)
     print("     SISTEMA DE GESTIÓN DE TAREAS")
     print("="*50)
@@ -34,7 +26,6 @@ def print_menu():
 
 
 def add_task(handler: Task_handler):
-    """Añade una nueva tarea"""
     print("\n--- AÑADIR NUEVA TAREA ---")
     
     try:
@@ -69,7 +60,6 @@ def add_task(handler: Task_handler):
 
 
 def view_all_tasks(handler: Task_handler):
-    """Muestra todas las tareas"""
     print("\n--- TODAS LAS TAREAS ---")
     tasks = handler.get_all_tasks()
     
@@ -82,7 +72,6 @@ def view_all_tasks(handler: Task_handler):
 
 
 def print_task(task: dict):
-    """Imprime una tarea con formato"""
     status = "✓ COMPLETADA" if task['completada'] else "○ PENDIENTE"
     priority_map = {1: "Alta", 2: "Media", 3: "Baja"}
     priority = priority_map.get(task['prioridad'], str(task['prioridad']))
@@ -98,7 +87,6 @@ def print_task(task: dict):
 
 
 def search_task_by_id(handler: Task_handler):
-    """Busca una tarea por ID"""
     print("\n--- BUSCAR TAREA POR ID ---")
     
     try:
@@ -115,7 +103,6 @@ def search_task_by_id(handler: Task_handler):
 
 
 def update_task(handler: Task_handler):
-    """Actualiza una tarea existente"""
     print("\n--- ACTUALIZAR TAREA ---")
     
     try:
@@ -161,7 +148,6 @@ def update_task(handler: Task_handler):
 
 
 def complete_task(handler: Task_handler):
-    """Marca una tarea como completada"""
     print("\n--- COMPLETAR TAREA ---")
     
     try:
@@ -177,7 +163,6 @@ def complete_task(handler: Task_handler):
 
 
 def delete_task(handler: Task_handler):
-    """Elimina una tarea"""
     print("\n--- ELIMINAR TAREA ---")
     
     try:
@@ -200,7 +185,6 @@ def delete_task(handler: Task_handler):
 
 
 def search_by_category(handler: Task_handler):
-    """Busca tareas por categoría"""
     print("\n--- BUSCAR POR CATEGORÍA ---")
     
     category = input("Nombre de la categoría: ").strip()
@@ -215,7 +199,6 @@ def search_by_category(handler: Task_handler):
 
 
 def generate_report(handler: Task_handler):
-    """Genera un reporte PDF"""
     print("\n--- GENERAR REPORTE PDF ---")
     
     tasks = handler.get_all_tasks()
@@ -257,7 +240,6 @@ def save_tasks(handler: Task_handler):
 
 
 def load_tasks(handler: Task_handler):
-    """Carga tareas desde un archivo"""
     print("\n--- CARGAR TAREAS ---")
     
     filename = input("Nombre del archivo (default: tasks.json): ").strip()
@@ -282,7 +264,6 @@ def load_tasks(handler: Task_handler):
 
 
 def main():
-    """Función principal de la aplicación"""
     handler = Task_handler()
     
     print("\n¡Bienvenido al Sistema de Gestión de Tareas!")

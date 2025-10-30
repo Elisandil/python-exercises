@@ -8,13 +8,6 @@ from datetime import datetime
 
 
 def generate_pdf_report(tasks: List[Dict[str, Any]], file_name: str = "task_report.pdf") -> None:
-    """
-    Genera un reporte PDF con todas las tareas
-    
-    Args:
-        tasks: Lista de tareas en formato diccionario
-        file_name: Nombre del archivo PDF a generar
-    """
     doc = SimpleDocTemplate(file_name, pagesize=letter)
     elements = []
     styles = getSampleStyleSheet()
