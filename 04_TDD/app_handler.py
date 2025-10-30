@@ -9,29 +9,27 @@ class App_handler:
         self.cargar_datos_iniciales()
     
     def cargar_datos_iniciales(self):
-        """Carga los datos desde el archivo JSON al iniciar"""
         self.handler = load_data_from_file()
         print("Datos cargados correctamente.")
     
     def recargar_datos(self):
-        """Recarga los datos desde el archivo JSON"""
+
         if confirmar_accion("¿Estás seguro de recargar los datos? Se perderán los cambios no guardados."):
             self.handler = load_data_from_file()
             print("Datos recargados correctamente.")
         pausar()
     
     def guardar_datos(self):
-        """Guarda los datos en el archivo JSON"""
+
         if save_data_to_file(self.handler):
             print("Datos guardados correctamente.")
         else:
             print("Error al guardar los datos.")
         pausar()
     
-    # Gestión de Alumnos
     def listar_alumnos(self):
-        """Lista todos los alumnos"""
         alumnos = self.handler.get_all_alumnos()
+        
         if not alumnos:
             print("\nNo hay alumnos registrados.")
             pausar()
@@ -56,7 +54,6 @@ class App_handler:
         pausar()
     
     def insertar_alumno(self):
-        """Inserta un nuevo alumno"""
         print("\n=== INSERTAR NUEVO ALUMNO ===")
         
         id_nuevo = generar_id_unico(self.handler.get_all_alumnos())
@@ -74,7 +71,6 @@ class App_handler:
         pausar()
     
     def modificar_alumno(self):
-        """Modifica un alumno existente"""
         print("\n=== MODIFICAR ALUMNO ===")
         
         self.listar_alumnos()
@@ -107,7 +103,6 @@ class App_handler:
         pausar()
     
     def borrar_alumno(self):
-        """Borra un alumno"""
         print("\n=== BORRAR ALUMNO ===")
         
         self.listar_alumnos()
@@ -128,10 +123,9 @@ class App_handler:
         
         pausar()
     
-    # Gestión de Módulos
     def listar_modulos(self):
-        """Lista todos los módulos"""
         modulos = self.handler.get_all_modulos()
+        
         if not modulos:
             print("\nNo hay módulos registrados.")
             pausar()
@@ -155,7 +149,6 @@ class App_handler:
         pausar()
     
     def insertar_modulo(self):
-        """Inserta un nuevo módulo"""
         print("\n=== INSERTAR NUEVO MÓDULO ===")
         
         id_nuevo = generar_id_unico(self.handler.get_all_modulos())
@@ -174,7 +167,6 @@ class App_handler:
         pausar()
     
     def modificar_modulo(self):
-        """Modifica un módulo existente"""
         print("\n=== MODIFICAR MÓDULO ===")
         
         self.listar_modulos()
@@ -209,7 +201,6 @@ class App_handler:
         pausar()
     
     def borrar_modulo(self):
-        """Borra un módulo"""
         print("\n=== BORRAR MÓDULO ===")
         
         self.listar_modulos()
@@ -230,9 +221,7 @@ class App_handler:
         
         pausar()
     
-    # Gestión de Matrículas
     def matricular_alumno_modulo(self):
-        """Matricula un alumno en un módulo"""
         print("\n=== MATRICULAR ALUMNO EN MÓDULO ===")
         
         self.listar_alumnos()
@@ -261,7 +250,6 @@ class App_handler:
         pausar()
     
     def desmatricular_alumno_modulo(self):
-        """Desmatricula un alumno de un módulo"""
         print("\n=== DESMATRICULAR ALUMNO DE MÓDULO ===")
         
         self.listar_alumnos()
@@ -293,7 +281,6 @@ class App_handler:
         pausar()
     
     def ver_modulos_alumno(self):
-        """Muestra los módulos de un alumno"""
         print("\n=== VER MÓDULOS DE ALUMNO ===")
         
         self.listar_alumnos()

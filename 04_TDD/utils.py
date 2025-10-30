@@ -1,13 +1,12 @@
 import re
 
 def validar_email(email: str) -> bool:
-    """Valida el formato de un email"""
     patron = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     return re.match(patron, email) is not None
 
 
 def validar_entero(valor: str) -> bool:
-    """Valida si un string puede convertirse a entero"""
+
     try:
         int(valor)
         return True
@@ -16,14 +15,14 @@ def validar_entero(valor: str) -> bool:
 
 
 def validar_entero_positivo(valor: str) -> bool:
-    """Valida si un string es un entero positivo"""
+
     if validar_entero(valor):
         return int(valor) > 0
     return False
 
 
 def solicitar_entero(mensaje: str, min_val: int = None, max_val: int = None) -> int:
-    """Solicita un entero al usuario con validación"""
+
     while True:
         entrada = input(mensaje)
         if validar_entero(entrada):
@@ -40,7 +39,7 @@ def solicitar_entero(mensaje: str, min_val: int = None, max_val: int = None) -> 
 
 
 def solicitar_texto(mensaje: str, min_length: int = 1) -> str:
-    """Solicita un texto al usuario con validación"""
+
     while True:
         entrada = input(mensaje).strip()
         if len(entrada) >= min_length:
@@ -50,7 +49,7 @@ def solicitar_texto(mensaje: str, min_length: int = 1) -> str:
 
 
 def solicitar_email(mensaje: str) -> str:
-    """Solicita un email al usuario con validación"""
+
     while True:
         entrada = input(mensaje).strip()
         if validar_email(entrada):
@@ -60,7 +59,7 @@ def solicitar_email(mensaje: str) -> str:
 
 
 def confirmar_accion(mensaje: str) -> bool:
-    """Solicita confirmación al usuario (S/N)"""
+
     while True:
         respuesta = input(f"{mensaje} (S/N): ").strip().upper()
         if respuesta in ['S', 'SI', 'SÍ']:
@@ -72,18 +71,16 @@ def confirmar_accion(mensaje: str) -> bool:
 
 
 def limpiar_pantalla():
-    """Limpia la pantalla de la consola"""
     import os
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def pausar():
-    """Pausa la ejecución hasta que el usuario presione Enter"""
     input("\nPresiona Enter para continuar...")
 
 
 def mostrar_tabla(headers: list, rows: list, titulo: str = None):
-    """Muestra datos en formato tabla"""
+
     if titulo:
         print(f"\n{'=' * 80}")
         print(f"{titulo:^80}")
@@ -109,7 +106,7 @@ def mostrar_tabla(headers: list, rows: list, titulo: str = None):
 
 
 def generar_id_unico(lista_existente: list) -> int:
-    """Genera un ID único basado en los IDs existentes"""
+
     if not lista_existente:
         return 1
     ids = [item['id'] for item in lista_existente]

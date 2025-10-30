@@ -10,6 +10,7 @@ class Alumno:
         self.modulos = modulos if modulos else []
     
     def to_dict(self) -> Dict:
+        
         return {
             'id': self.id,
             'nombre': self.nombre,
@@ -20,6 +21,7 @@ class Alumno:
     
     @staticmethod
     def from_dict(data: Dict) -> 'Alumno':
+        
         return Alumno(
             id=data['id'],
             nombre=data['nombre'],
@@ -38,6 +40,7 @@ class Modulo:
         self.curso = curso
     
     def to_dict(self) -> Dict:
+        
         return {
             'id': self.id,
             'nombre': self.nombre,
@@ -48,6 +51,7 @@ class Modulo:
     
     @staticmethod
     def from_dict(data: Dict) -> 'Modulo':
+        
         return Modulo(
             id=data['id'],
             nombre=data['nombre'],
@@ -62,14 +66,15 @@ class Matricula_handler:
         self.alumnos: List[Alumno] = []
         self.modulos: List[Modulo] = []
     
-    # Gestión de Alumnos
     def add_alumno(self, alumno: Alumno) -> bool:
+        
         if self.get_alumno_by_id(alumno.id):
             return False
         self.alumnos.append(alumno)
         return True
     
     def get_alumno_by_id(self, alumno_id: int) -> Optional[Dict]:
+        
         for alumno in self.alumnos:
             if alumno.id == alumno_id:
                 return alumno.to_dict()
@@ -79,6 +84,7 @@ class Matricula_handler:
         return [alumno.to_dict() for alumno in self.alumnos]
     
     def update_alumno(self, alumno_id: int, nombre: str = None, apellidos: str = None, email: str = None) -> bool:
+        
         for alumno in self.alumnos:
             if alumno.id == alumno_id:
                 if nombre:
@@ -91,20 +97,22 @@ class Matricula_handler:
         return False
     
     def delete_alumno(self, alumno_id: int) -> bool:
+        
         for i, alumno in enumerate(self.alumnos):
             if alumno.id == alumno_id:
                 self.alumnos.pop(i)
                 return True
         return False
     
-    # Gestión de Módulos
     def add_modulo(self, modulo: Modulo) -> bool:
+        
         if self.get_modulo_by_id(modulo.id):
             return False
         self.modulos.append(modulo)
         return True
     
     def get_modulo_by_id(self, modulo_id: int) -> Optional[Dict]:
+        
         for modulo in self.modulos:
             if modulo.id == modulo_id:
                 return modulo.to_dict()
@@ -114,6 +122,7 @@ class Matricula_handler:
         return [modulo.to_dict() for modulo in self.modulos]
     
     def update_modulo(self, modulo_id: int, nombre: str = None, codigo: str = None, creditos: int = None, curso: int = None) -> bool:
+        
         for modulo in self.modulos:
             if modulo.id == modulo_id:
                 if nombre:
@@ -128,6 +137,7 @@ class Matricula_handler:
         return False
     
     def delete_modulo(self, modulo_id: int) -> bool:
+        
         for alumno in self.alumnos:
             if modulo_id in alumno.modulos:
                 alumno.modulos.remove(modulo_id)
@@ -138,9 +148,9 @@ class Matricula_handler:
                 return True
         return False
     
-    # Gestión de Matrículas
     def matricular_alumno(self, alumno_id: int, modulo_id: int) -> bool:
         alumno = None
+        
         for a in self.alumnos:
             if a.id == alumno_id:
                 alumno = a
@@ -159,6 +169,7 @@ class Matricula_handler:
         return True
     
     def desmatricular_alumno(self, alumno_id: int, modulo_id: int) -> bool:
+        
         for alumno in self.alumnos:
             if alumno.id == alumno_id:
                 if modulo_id in alumno.modulos:
@@ -168,6 +179,7 @@ class Matricula_handler:
         return False
     
     def get_modulos_alumno(self, alumno_id: int) -> List[Dict]:
+        
         for alumno in self.alumnos:
             if alumno.id == alumno_id:
                 modulos_matriculados = []
@@ -180,6 +192,7 @@ class Matricula_handler:
 
 
 def save_data_to_file(handler: Matricula_handler, filename: str = 'matriculas.json') -> bool:
+   
     try:
         data = {
             'alumnos': handler.get_all_alumnos(),
@@ -195,6 +208,7 @@ def save_data_to_file(handler: Matricula_handler, filename: str = 'matriculas.js
 
 def load_data_from_file(filename: str = 'matriculas.json') -> Matricula_handler:
     handler = Matricula_handler()
+    
     try:
         with open(filename, 'r', encoding='utf-8') as f:
             data = json.load(f)

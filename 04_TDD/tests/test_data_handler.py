@@ -74,7 +74,6 @@ class TestMatriculaHandler(unittest.TestCase):
     def setUp(self):
         self.handler = Matricula_handler()
     
-    # Tests de Alumnos
     def test_add_alumno(self):
         alumno = Alumno(1, "Juan", "Pérez", "juan@example.com")
         result = self.handler.add_alumno(alumno)
@@ -118,7 +117,6 @@ class TestMatriculaHandler(unittest.TestCase):
         self.assertTrue(result)
         self.assertEqual(len(self.handler.get_all_alumnos()), 0)
     
-    # Tests de Módulos
     def test_add_modulo(self):
         modulo = Modulo(1, "Programación", "PRG101", 6, 1)
         result = self.handler.add_modulo(modulo)
@@ -169,7 +167,6 @@ class TestMatriculaHandler(unittest.TestCase):
         alumno_updated = self.handler.get_alumno_by_id(40)
         self.assertNotIn(40, alumno_updated['modulos'])
     
-    # Tests de Matrículas
     def test_matricular_alumno(self):
         alumno = Alumno(50, "Elena", "Sanz", "elena@example.com")
         modulo = Modulo(50, "Matemáticas", "MAT101", 6, 1)

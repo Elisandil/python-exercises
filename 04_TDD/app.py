@@ -3,7 +3,6 @@ from utils import limpiar_pantalla, solicitar_entero, pausar
 
 
 def mostrar_menu_principal():
-    """Muestra el menú principal"""
     print("\n" + "=" * 60)
     print("SISTEMA DE GESTIÓN DE MATRICULACIÓN".center(60))
     print("=" * 60)
@@ -17,7 +16,6 @@ def mostrar_menu_principal():
 
 
 def mostrar_menu_alumnos():
-    """Muestra el menú de gestión de alumnos"""
     print("\n" + "=" * 60)
     print("GESTIÓN DE ALUMNOS".center(60))
     print("=" * 60)
@@ -30,7 +28,6 @@ def mostrar_menu_alumnos():
 
 
 def mostrar_menu_modulos():
-    """Muestra el menú de gestión de módulos"""
     print("\n" + "=" * 60)
     print("GESTIÓN DE MÓDULOS".center(60))
     print("=" * 60)
@@ -43,7 +40,6 @@ def mostrar_menu_modulos():
 
 
 def mostrar_menu_matriculas():
-    """Muestra el menú de gestión de matrículas"""
     print("\n" + "=" * 60)
     print("GESTIÓN DE MATRÍCULAS".center(60))
     print("=" * 60)
@@ -55,7 +51,7 @@ def mostrar_menu_matriculas():
 
 
 def menu_alumnos(app: App_handler):
-    """Gestiona el menú de alumnos"""
+
     while True:
         limpiar_pantalla()
         mostrar_menu_alumnos()
@@ -79,7 +75,7 @@ def menu_alumnos(app: App_handler):
 
 
 def menu_modulos(app: App_handler):
-    """Gestiona el menú de módulos"""
+
     while True:
         limpiar_pantalla()
         mostrar_menu_modulos()
@@ -103,7 +99,7 @@ def menu_modulos(app: App_handler):
 
 
 def menu_matriculas(app: App_handler):
-    """Gestiona el menú de matrículas"""
+    
     while True:
         limpiar_pantalla()
         mostrar_menu_matriculas()
@@ -124,7 +120,6 @@ def menu_matriculas(app: App_handler):
 
 
 def main():
-    """Función principal de la aplicación"""
     limpiar_pantalla()
     print("\n" + "=" * 60)
     print("BIENVENIDO AL SISTEMA DE GESTIÓN DE MATRICULACIÓN".center(60))
